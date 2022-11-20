@@ -9,9 +9,6 @@ export default function DashboardContainer() {
   const showExplorer = useSelector((state) => state.layout.showExplorer);
   const currentPage = useSelector((state) => state.layout.currentPage);
 
-  console.log("showExplorer", showExplorer);
-  console.log("currentPage", currentPage);
-
   return (
     <>
       <Navbar />

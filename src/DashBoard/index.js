@@ -11,25 +11,21 @@ import { StyledDashboard, StyledTopRow } from "./StyledDashboardElements";
 export default function ({ page }) {
   const STATS_URI = process.env.REACT_APP_STATS_URI;
   const [dateRange, setDateRange] = useState("last_7_days");
+  const [data, setData] = useState(undefined);
 
-  useEffect(
-    () => async () => {
-      const testCall = `${STATS_URI}?range=today`;
-      const data = await axios
-        .get(testCall)
-        .then((res) => res.data)
-        .catch((error) => error);
-
-      console.log("data", data);
-    },
-    []
-  );
+  useEffect(() => {
+    const testCall = `${STATS_URI}?range=${dateRange}`;
+    axios
+      .get(testCall)
+      .then((res) => setData(res.data))
+      .catch((error) => error);
+  }, [dateRange]);
 
   return (
     <StyledDashboard>
       <StyledTopRow>
         {page}
-        <DateSelector setDateRange={setDateRange} />
+        <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
       </StyledTopRow>
     </StyledDashboard>
   );
