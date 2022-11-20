@@ -6,7 +6,7 @@ import * as types from '../constants/ActionTypes';
 //default layout
 const initialState = new Layout();
 
-export default (layout = initialState, action) => {
+  const LayoutReducer = (layout = initialState, action) => {
   switch (action.type) {
  
     case types.CHANGE_PAGE: {
@@ -28,3 +28,5 @@ export default (layout = initialState, action) => {
       return layout;
   }
 };
+
+export default LayoutReducer;
