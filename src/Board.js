@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function Board() {
-  return (
-    <div>Board</div>
-  )
+export default function Board({ page }) {
+  return <div>{page}</div>;
 }
