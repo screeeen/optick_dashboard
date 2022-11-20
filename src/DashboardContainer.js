@@ -1,10 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar";
-import Board from "./Board";
+import DashBoard from "./DashBoard";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
+import { StyledContainer } from "./DashBoard/StyledDashboardElements";
 
-export default function Dashboard() {
+export default function DashboardContainer() {
   const showExplorer = useSelector((state) => state.layout.showExplorer);
   const currentPage = useSelector((state) => state.layout.currentPage);
 
@@ -14,8 +15,10 @@ export default function Dashboard() {
   return (
     <>
       <Navbar />
-      {showExplorer && <Sidebar />}
-      <Board page={currentPage} />
+      <StyledContainer>
+        {showExplorer && <Sidebar />}
+        <DashBoard page={currentPage} />
+      </StyledContainer>
     </>
   );
 }

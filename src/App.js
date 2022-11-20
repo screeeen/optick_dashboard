@@ -3,10 +3,7 @@ import { Provider } from "react-redux";
 import { StyledApp } from "./StyledApp";
 import store from "./store/index";
 import { createGlobalStyle } from "styled-components";
-import Dashboard from "./Dashboard";
-
-// https://us-central1-opticks-test.cloudfunctions.net/stats
-// https://us-central1-opticks-test.cloudfunctions.net/savings
+import DashboardContainer from "./DashboardContainer";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -21,7 +18,7 @@ function App() {
     <Provider store={store}>
       <GlobalStyle />
       <StyledApp>
-        <Dashboard />
+        <DashboardContainer />
       </StyledApp>
     </Provider>
   );

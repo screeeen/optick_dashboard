@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledSidebar = styled.section`
-  width: 20vw;
+  width: 20%;
   min-width: 20vw;
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;

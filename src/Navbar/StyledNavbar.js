@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledNavbar = styled.header`
   width: 100%;
-  // height: 2vh;
+  min-height: 4vh;
 
   background: whiteSmoke;
   display: flex;

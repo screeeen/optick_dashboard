@@ -1,11 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledApp = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   height: 100vh;
-  background-color: #FFFEFE;
-  
+  background-color: #fffefe;
   overflow: hidden; /* Hide scrollbars */
-  }
 `;
