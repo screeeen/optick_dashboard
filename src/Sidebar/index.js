@@ -3,6 +3,9 @@ import { StyledSidebar } from './StyledSidebar'
 
 export default function Sidebar() {
   return (
-    <StyledSidebar>Sidebar</StyledSidebar>
+    <StyledSidebar>
+      <p>INTELLIGENCE</p>
+      
+    </StyledSidebar>
   )
 }
