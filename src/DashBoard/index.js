@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import DateSelector from "./DateSelector";
-import { StyledDashboard, StyledRow } from "./StyledDashboardElements";
+import { StyledDashboard, StyledBoardRow } from "./StyledDashboardElements";
 import MidRow from "./MidRow";
 
 //https://us-central1-opticks-test.cloudfunctions.net/stats
@@ -24,11 +24,12 @@ export default function ({ page }) {
 
   return (
     <StyledDashboard>
-      <StyledRow>
-        {page}
+      <StyledBoardRow>
+        <h4>{page}</h4>
         <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
-      </StyledRow>
-      <MidRow data={data} />
+      </StyledBoardRow>
+
+      <MidRow data={data} page={page} />
     </StyledDashboard>
   );
 }

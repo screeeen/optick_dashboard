@@ -5,8 +5,8 @@ import { MENU_ITEMS } from "./menuDescriptor";
 import { useDispatch } from "react-redux";
 import { changePage } from "../actions/LayoutActions";
 
-export default function Sidebar() {
-  const [selection, setSelection] = useState(MENU_ITEMS[0].name);
+export default function Sidebar({ currentPage }) {
+  const [selection, setSelection] = useState(currentPage);
   const dispatch = useDispatch();
 
   const selectPage = ({ name }) => {

@@ -13,7 +13,7 @@ export default function DashboardContainer() {
     <>
       <Navbar />
       <StyledContainer>
-        {showExplorer && <Sidebar />}
+        {showExplorer && <Sidebar currentPage={currentPage} />}
         <DashBoard page={currentPage} />
       </StyledContainer>
     </>

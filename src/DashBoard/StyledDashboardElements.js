@@ -14,6 +14,11 @@ export const StyledRow = styled.div`
   flex-direction: row;
 `;
 
+// export const StyledTopRow = styled(styled)`
+//   display: flex;
+//   flex-direction: row;
+// `;
+
 export const StyledDashboard = styled.div`
   width: 100%;
   height: 100%;
@@ -81,4 +86,33 @@ export const StyledMessage = styled.div`
   }
 
   color: blue;
+`;
+
+export const Bar = styled.progress`
+  /* border:  */
+  height: 10px;
+  width: 300px;
+  appearance: none;
+  -webkit-appearance: none;
+
+  ::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  ::-webkit-progress-value {
+    background: ${(props) => props.color};
+  }
+
+  ::-moz-progress-bar {
+    background-color: transparent;
+  }
+
+  ::-moz-progress-value {
+    background: ${(props) => props.color};
+  }
+
+  -moz-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  transform: scale(-1, -1);
 `;

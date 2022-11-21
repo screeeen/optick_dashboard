@@ -6,15 +6,27 @@ import {
 } from "./StyledDashboardElements";
 import Line from "./Line";
 import Doughnut from "./Doughnut";
+import Savings from "./Savings";
+import Threats from "./Threats";
 
-export default function MidRow({ data }) {
+export default function MidRow({ data, page }) {
   if (!data) return;
 
   return (
     <StyledBoardRow>
       <StyledChartContainer>
-        <Line data={data} />
-        <Doughnut data={data} />
+        {page === "Dashboard" ? (
+          <>
+            <Line data={data} />
+            <Doughnut data={data} />
+          </>
+        ) : (
+          <>
+            <Savings data={data} />
+            <Doughnut data={data} />
+            <Threats data={data} />
+          </>
+        )}
       </StyledChartContainer>
     </StyledBoardRow>
   );

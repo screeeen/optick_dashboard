@@ -31,32 +31,28 @@ ChartJS.register(
 
 export default function ({ data, grow }) {
   if (!data) return;
-  console.log("data", data);
 
   const total = 0;
 
-  const invalidData = data.map((day) => day.risk.invalid);
-  const totalInvalids = invalidData.reduce(
-    (acu, dayData) => acu + dayData,
-    total
-  );
-  console.log("totalInvalids", totalInvalids);
+  const sortedData = data.map((day) => ({
+    invalid: day.risk.invalid,
+    suspicious: day.risk.suspicious,
+    legitimate: day.risk.legitimate,
+  }));
 
-  const suspiciousData = data.map((day) => day.risk.suspicious);
-  const totalSuspicious = suspiciousData.reduce(
-    (acu, dayData) => acu + dayData,
-    total
-  );
-  console.log("totalSuspicious", totalSuspicious);
+  const sum = (data) => data.reduce((acu, dayData) => acu + dayData, total);
 
-  const legitimateData = data.map((day) => day.risk.legitimate);
-  const totalLegitimate = legitimateData.reduce(
-    (acu, dayData) => acu + dayData,
-    total
-  );
-  console.log("totalLegitimate", totalLegitimate);
+  const totalInvalids = sum(sortedData.map((day) => day.invalid));
+  const totalSuspicious = sum(sortedData.map((day) => day.suspicious));
+  const totalLegitimate = sum(sortedData.map((day) => day.legitimate));
 
   const datasets = [totalInvalids, totalSuspicious, totalLegitimate];
+
+  const legend = [
+    { name: "invalid", amount: totalInvalids, color: "#feb031" },
+    { name: "suspicious", amount: totalSuspicious, color: "#f05641" },
+    { name: "legitimate", amount: totalLegitimate, color: "#25d184" },
+  ];
 
   const chartData = {
     labels: "",
@@ -82,14 +78,6 @@ export default function ({ data, grow }) {
       },
     },
   };
-
-  const legend = [
-    { name: "invalid", amount: totalInvalids, color: "#feb031" },
-    { name: "suspicious", amount: totalSuspicious, color: "#f05641" },
-    { name: "legitimate", amount: totalLegitimate, color: "#25d184" },
-  ];
-
-  console.log("chartData - Invalid", chartData);
 
   return (
     <StyledChart>
