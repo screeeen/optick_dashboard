@@ -73,6 +73,7 @@ export default function ({ data, grow }) {
   const options = {
     responsive: false,
     maintainAspectRatio: false,
+    aspectRatio: 2,
     plugins: {
       legend: {
         position: "right",
@@ -81,7 +82,7 @@ export default function ({ data, grow }) {
   };
 
   return (
-    <StyledChart>
+    <StyledChart grow={1}>
       <StyledColumn>
         <h2>Traffic Veracity</h2>
         <StyledRow>

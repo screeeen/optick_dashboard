@@ -40,7 +40,6 @@ export default function ({ data, grow }) {
         data: datasets,
         label: "Invalid visits",
         borderColor: "#3e95cd",
-        fill: false,
       },
     ],
   };
@@ -48,15 +47,31 @@ export default function ({ data, grow }) {
   const options = {
     responsive: false,
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        position: "left",
+        ticks: {
+          callback: function (value, index, values) {
+            return Number((value / 700).toFixed(1)) + "K"; //pass tick values as a string into Number function
+          },
+        },
+      },
+    },
     plugins: {
       legend: {
-        position: "right",
+        position: "bottom",
       },
+      // title: {
+      //   display: true,
+      //   text: "Invalid Traffic over time",
+      //   fontStyle: "bold",
+      //   position: "top",
+      // },
     },
   };
 
   return (
-    <StyledChart>
+    <StyledChart grow={4}>
       <StyledColumn>
         <h2>Invalid Traffic over time</h2>
         {enoughData ? (

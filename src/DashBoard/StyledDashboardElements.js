@@ -7,6 +7,7 @@ export const StyledDateSelector = styled.select`
 export const StyledColumn = styled.div`
   display: flex;
   flex-direction: column;
+  /* position: relative; */
 `;
 
 export const StyledRow = styled.div`
@@ -33,9 +34,10 @@ export const StyledBoardRow = styled(StyledRow)`
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding: 1%;
+  padding: 5%;
+  border: 1px solid blue;
 `;
 
 export const StyledContainer = styled.div`
@@ -48,10 +50,11 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledChartContainer = styled(StyledRow)`
-  /* max-height: 20vh;
-  min-height: 10vh; */
-  height: 10vh;
+  max-height: 14vh;
+  width: 100%;
   justify-content: flex-start;
+  align-items: center;
+  border: 1px solid yellow;
 `;
 
 export const StyledChart = styled.div`
@@ -59,6 +62,10 @@ export const StyledChart = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-grow: ${(props) => props.grow};
+  /* width: 100%; */
+  /* height: 50%; */
+  margin: 2em;
 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   /* flex-grow: ${(props) => props.grow}; */

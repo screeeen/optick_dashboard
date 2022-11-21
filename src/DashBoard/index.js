@@ -25,7 +25,6 @@ export default function ({ page }) {
   return (
     <StyledDashboard>
       <StyledBoardRow>
-        <h4>{page}</h4>
         <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
       </StyledBoardRow>
 
