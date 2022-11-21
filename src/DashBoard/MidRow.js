@@ -1,7 +1,6 @@
 import React from "react";
 import {
   StyledChartContainer,
-  StyledChart,
   StyledBoardRow,
 } from "./StyledDashboardElements";
 import Line from "./Line";

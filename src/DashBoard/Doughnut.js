@@ -65,6 +65,7 @@ export default function ({ data, grow }) {
           "rgb(37,209,132)",
         ],
         fill: false,
+        tension: 0.5,
       },
     ],
   };
