@@ -69,3 +69,16 @@ export const Dot = styled.div`
   border-radius: 100%;
   width: 12px;
 `;
+
+export const StyledMessage = styled.div`
+  width: 60%;
+  height: 60%;
+  border-radius: 5%;
+  background-color: lightblue;
+  border: 1px solid blue;
+  h4 {
+    font-weight: bold;
+  }
+
+  color: blue;
+`;

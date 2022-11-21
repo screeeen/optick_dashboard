@@ -1,6 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { StyledChart, StyledColumn } from "./StyledDashboardElements";
+import FallbackMessage from "./FallbackMessage";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,6 +26,7 @@ ChartJS.register(
 export default function ({ data, grow }) {
   if (!data) return;
 
+  const enoughData = data.length > 3;
   const labels = data.map((day) =>
     day.day.replace("-2022", "").replace("-", "/")
   );
@@ -47,7 +49,11 @@ export default function ({ data, grow }) {
     <StyledChart>
       <StyledColumn>
         <h2>Invalid Traffic over time</h2>
-        <Line datasetIdKey="id" data={chartData} />
+        {enoughData ? (
+          <Line datasetIdKey="id" data={chartData} />
+        ) : (
+          <FallbackMessage />
+        )}
       </StyledColumn>
     </StyledChart>
   );
