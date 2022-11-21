@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  StyledChart,
-  StyledColumn,
-  StyledRow,
-  Dot,
-} from "./StyledDashboardElements";
+import styled from "styled-components";
+
 import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -110,3 +106,35 @@ const StatsDot = ({ name, amount, color }) => {
     </StyledRow>
   );
 };
+
+const StyledRow = styled.div`
+  display: flex;
+`;
+
+const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Dot = styled.div`
+  background-color: transparent;
+  border: 4px solid ${(props) => props.color};
+  height: 12px;
+  border-radius: 100%;
+  width: 12px;
+`;
+
+const StyledChart = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: ${(props) => props.grow};
+
+  margin: 2em;
+
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  h2 {
+    font-weight: bold;
+  }
+`;

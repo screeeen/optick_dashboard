@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyledSidebar } from "./StyledSidebar";
 import SelectionItem from "./SelectionItem";
 import { MENU_ITEMS } from "./menuDescriptor";
 import { useDispatch } from "react-redux";
 import { changePage } from "../actions/LayoutActions";
+import styled from "styled-components";
 
 export default function Sidebar({ currentPage }) {
   const [selection, setSelection] = useState(currentPage);
@@ -30,4 +30,22 @@ export default function Sidebar({ currentPage }) {
   );
 }
 
-//select({ e, name: item.name }
+const StyledSidebar = styled.section`
+  width: 18%;
+  min-width: 10vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 2% 2% 2% 0;
+  color: #99b4cc;
+
+  p {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 2% 0 10% 2%;
+  }
+
+  overflow: auto;
+  background: #00447f;
+`;

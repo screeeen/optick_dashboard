@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyledChart,
-  StyledColumn,
-  StyledRow,
-  Dot,
-} from "./StyledDashboardElements";
+import styled from "styled-components";
 import axios from "axios";
 import FallbackMessage from "./FallbackMessage";
 
@@ -47,3 +42,26 @@ export default function Savings() {
     </>
   );
 }
+
+const StyledChart = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: ${(props) => props.grow};
+  margin: 2em;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    font-weight: bold;
+  }
+`;
+
+const StyledRow = styled.div`
+  display: flex;
+`;
+
+const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

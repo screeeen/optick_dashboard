@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledMessage } from "./StyledDashboardElements";
+import styled from "styled-components";
 
 const defaultTitle = "Select a wider range";
 const defaultMessage =
@@ -16,3 +16,16 @@ export default function FallbackMessage({
     </StyledMessage>
   );
 }
+
+const StyledMessage = styled.div`
+  width: 60%;
+  height: 60%;
+  border-radius: 5%;
+  background-color: lightblue;
+  border: 1px solid blue;
+  h4 {
+    font-weight: bold;
+  }
+
+  color: blue;
+`;

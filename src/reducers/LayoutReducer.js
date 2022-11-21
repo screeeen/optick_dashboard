@@ -1,7 +1,7 @@
 // @flow
 
 import Layout from "../model/Layout";
-import * as types from "../constants/ActionTypes";
+import * as types from "../actionTypes/ActionTypes";
 
 //default layout
 const initialState = new Layout();

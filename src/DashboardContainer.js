@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import DashBoard from "./DashBoard";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
-import { StyledContainer } from "./DashBoard/StyledDashboardElements";
+import styled from "styled-components";
 
 export default function DashboardContainer() {
   const showExplorer = useSelector((state) => state.layout.showExplorer);
@@ -19,3 +19,11 @@ export default function DashboardContainer() {
     </>
   );
 }
+
+const StyledContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;

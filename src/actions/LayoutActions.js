@@ -1,4 +1,4 @@
-import * as types from "../constants/ActionTypes";
+import * as types from "../actionTypes/ActionTypes";
 
 const changePage = (payload) => ({
   type: types.CHANGE_PAGE,

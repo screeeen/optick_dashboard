@@ -1,7 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { StyledChart, StyledColumn } from "./StyledDashboardElements";
 import FallbackMessage from "./FallbackMessage";
+import styled from "styled-components";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -40,6 +41,7 @@ export default function ({ data, grow }) {
         data: datasets,
         label: "Invalid visits",
         borderColor: "#3e95cd",
+        tension: 0.4,
       },
     ],
   };
@@ -55,18 +57,24 @@ export default function ({ data, grow }) {
             return Number((value / 700).toFixed(1)) + "K"; //pass tick values as a string into Number function
           },
         },
+        title: {
+          display: true,
+          text: "Number of visits",
+        },
+        grid: {
+          display: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
       },
     },
     plugins: {
       legend: {
         position: "bottom",
       },
-      // title: {
-      //   display: true,
-      //   text: "Invalid Traffic over time",
-      //   fontStyle: "bold",
-      //   position: "top",
-      // },
     },
   };
 
@@ -83,3 +91,22 @@ export default function ({ data, grow }) {
     </StyledChart>
   );
 }
+
+const StyledChart = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: ${(props) => props.grow};
+  margin: 2em;
+
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  h2 {
+    font-weight: bold;
+  }
+`;
+
+const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import DateSelector from "./DateSelector";
-import { StyledDashboard, StyledBoardRow } from "./StyledDashboardElements";
 import MidRow from "./MidRow";
+import styled from "styled-components";
 
 //https://us-central1-opticks-test.cloudfunctions.net/stats
 //https://us-central1-opticks-test.cloudfunctions.net/savings
@@ -32,3 +32,27 @@ export default function ({ page }) {
     </StyledDashboard>
   );
 }
+
+const StyledRow = styled.div`
+  display: flex;
+`;
+
+const StyledDashboard = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+
+const StyledBoardRow = styled(StyledRow)`
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5%;
+  border: 1px solid blue;
+`;

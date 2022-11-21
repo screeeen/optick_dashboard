@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  StyledChart,
-  StyledColumn,
-  StyledRow,
-  Bar,
-} from "./StyledDashboardElements";
+import styled from "styled-components";
 
 export default function Threats({ data }) {
   if (!data) return;
@@ -90,3 +85,54 @@ const StatsThreats = ({ name, amount, color, totalValues }) => {
     </StyledRow>
   );
 };
+
+const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledRow = styled.div`
+  display: flex;
+`;
+
+export const StyledChart = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: ${(props) => props.grow};
+  margin: 2em;
+
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  h2 {
+    font-weight: bold;
+  }
+`;
+
+const Bar = styled.progress`
+  height: 10px;
+  width: 300px;
+  appearance: none;
+  -webkit-appearance: none;
+
+  ::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  ::-webkit-progress-value {
+    background: ${(props) => props.color};
+  }
+
+  ::-moz-progress-bar {
+    background-color: transparent;
+  }
+
+  ::-moz-progress-value {
+    background: ${(props) => props.color};
+  }
+
+  -moz-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  transform: scale(-1, -1);
+`;

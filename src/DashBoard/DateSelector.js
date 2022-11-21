@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledDateSelector } from "./StyledDashboardElements";
+import styled from "styled-components";
 
 const rangeOptions = {
   today: "Today",
@@ -31,3 +31,7 @@ export default function ({ dateRange, setDateRange }) {
     </StyledDateSelector>
   );
 }
+
+const StyledDateSelector = styled.select`
+  color: black;
+`;
