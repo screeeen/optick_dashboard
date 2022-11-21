@@ -45,12 +45,22 @@ export default function ({ data, grow }) {
     ],
   };
 
+  const options = {
+    responsive: false,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "right",
+      },
+    },
+  };
+
   return (
     <StyledChart>
       <StyledColumn>
         <h2>Invalid Traffic over time</h2>
         {enoughData ? (
-          <Line datasetIdKey="id" data={chartData} />
+          <Line datasetIdKey="id" data={chartData} options={options} />
         ) : (
           <FallbackMessage />
         )}

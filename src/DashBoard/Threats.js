@@ -64,7 +64,7 @@ export default function Threats({ data }) {
   return (
     <StyledChart>
       <StyledColumn>
-        <h2>Traffic Veracity</h2>
+        <h2>Threat Distribution</h2>
         <StyledRow>
           <StyledColumn>
             {legend.map((item) =>
