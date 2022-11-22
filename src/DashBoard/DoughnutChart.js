@@ -143,7 +143,7 @@ const Row = styled.div`
 `;
 
 const Column = styled.div`
-  min-width: 50%;
+  // min-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;

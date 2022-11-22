@@ -31,9 +31,11 @@ const Row = styled.div`
 `;
 
 const Section = styled(Row)`
-  height: 20%;
+  height: 40%;
   width: 100%;
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
+  border: 2px solid red;
+
 `;

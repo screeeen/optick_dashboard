@@ -10,7 +10,7 @@ import styled from "styled-components";
 // console.log("REACT_APP_SAVINGS_URI", process.env.REACT_APP_SAVINGS_URI);
 
 export default function ({ page }) {
-  const STATS_URI = process.env.REACT_APP_STATS_URI;
+  const STATS_URI = 'https://us-central1-opticks-test.cloudfunctions.net/stats';//process.env.REACT_APP_STATS_URI;
   const [dateRange, setDateRange] = useState("last_7_days");
   const [data, setData] = useState(undefined);
 
@@ -25,13 +25,14 @@ export default function ({ page }) {
   return (
     <Container>
       <SubContainer>
-        <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
+        <TopSection>
+          <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
+        </TopSection>
+        <MiddleSection data={data} page={page} />
+        <Section>
+          <Other>Other widgets</Other>
+        </Section>
       </SubContainer>
-
-      <MiddleSection data={data} page={page} />
-      <Section>
-        <Other>Other widgets</Other>
-      </Section>
     </Container>
   );
 }
@@ -41,15 +42,22 @@ const StyledRow = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
+  width: 80%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
   margin: 1rem;
 `;
 
 const SubContainer = styled(StyledRow)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+`;
+
+const TopSection = styled(StyledRow)`
   width: 100%;
   max-height: 4rem;
   padding: 2rem;
