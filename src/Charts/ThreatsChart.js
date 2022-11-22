@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export default function Threats({ data }) {
   if (!data) return;
-  console.log("data", data);
 
   const total = 0;
 
@@ -13,48 +12,20 @@ export default function Threats({ data }) {
     nonCompliantTraffic: day.threats.NonCompliantTraffic,
     statisticalOutliers: day.threats.StatisticalOutliers,
     telemetryMissing: day.threats.TelemetryMissing,
+    total: day.total
   }));
-
-  console.log("sortedData", sortedData);
 
   const sum = (data) => data.reduce((acu, dayData) => acu + dayData, total);
 
-  const totalBadBot = sum(sortedData.map((day) => day.badBot));
-  console.log("totalBadBot", totalBadBot);
-
-  const totalDataTampering = sum(sortedData.map((day) => day.dataTampering));
-  console.log("totalDataTampering", totalDataTampering);
-
-  const totalNonCompliantTraffic = sum(
-    sortedData.map((day) => day.nonCompliantTraffic)
-  );
-  console.log("totalNonCompliantTraffic", totalNonCompliantTraffic);
-
-  const totalStatisticsOutliers = sum(
-    sortedData.map((day) => day.statisticalOutliers)
-  );
-
-  const totalTelemetry = sum(sortedData.map((day) => day.telemetryMissing));
-
-  const datasets = [
-    totalBadBot,
-    totalDataTampering,
-    totalNonCompliantTraffic,
-    totalStatisticsOutliers,
-    totalTelemetry,
-  ];
-
-  const color = "#5f8bb1";
-
   const legend = [
-    { name: "Bad Bots", amount: totalBadBot },
-    { name: "Data Tampering", amount: totalDataTampering },
-    { name: "Non-compliant Traffic", amount: totalNonCompliantTraffic },
-    { name: "Statistical anomalies", amount: totalStatisticsOutliers },
-    { name: "Telemetry Missing", amount: totalTelemetry },
+    { name: "Bad Bots", amount: sum(sortedData.map((day) => day.badBot)) },
+    { name: "Data Tampering", amount: sum(sortedData.map((day) => day.dataTampering)) },
+    { name: "Non-compliant Traffic", amount: sum(sortedData.map((day) => day.nonCompliantTraffic)) },
+    { name: "Statistical anomalies", amount: sum(sortedData.map((day) => day.statisticalOutliers)) },
+    { name: "Telemetry Missing", amount: sum(sortedData.map((day) => day.telemetryMissing)) },
   ];
 
-  const totalValues = datasets.reduce((acu, val) => acu + val, 0);
+  const totalValues = legend.reduce((acu, val) => acu + val.amount, 0);
 
   return (
     <Container>
@@ -75,13 +46,15 @@ export default function Threats({ data }) {
 
 const StatsThreats = ({ name, amount, color, totalValues }) => {
   return (
-    <Row>
+    <Row key={name}>
       <Bar value={amount} max={totalValues} color={color} amount={amount} />
       <h4>{amount}</h4>
       <span>{name}</span>
     </Row>
   );
 };
+
+const color = "#5f8bb1";
 
 const Column = styled.div`
   height: 100%;

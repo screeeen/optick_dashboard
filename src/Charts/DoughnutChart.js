@@ -30,31 +30,29 @@ export default function ({ data, grow }) {
 
   const total = 0;
 
-  const sortedData = data.map((day) => ({
-    invalid: day.risk.invalid,
-    suspicious: day.risk.suspicious,
-    legitimate: day.risk.legitimate,
-  }));
+  // ~~~~ very old fashion 
+  let invalid = 0;
+  let suspicious = 0;
+  let legitimate = 0;
 
-  const sum = (data) => data.reduce((acu, dayData) => acu + dayData, total);
+  data.forEach((day) => {
+    invalid += day.risk.invalid
+    suspicious += day.risk.suspicious
+    legitimate += day.risk.legitimate
+  });
 
-  const totalInvalids = sum(sortedData.map((day) => day.invalid));
-  const totalSuspicious = sum(sortedData.map((day) => day.suspicious));
-  const totalLegitimate = sum(sortedData.map((day) => day.legitimate));
+  const sortedData = [
+    { name: "invalid", amount: invalid, color: "#feb031" },
+    { name: "suspicious", amount: suspicious, color: "#f05641" },
+    { name: "legitimate", amount: legitimate, color: "#25d184" },
+  ]
 
-  const datasets = [totalInvalids, totalSuspicious, totalLegitimate];
-
-  const legend = [
-    { name: "invalid", amount: totalInvalids, color: "#feb031" },
-    { name: "suspicious", amount: totalSuspicious, color: "#f05641" },
-    { name: "legitimate", amount: totalLegitimate, color: "#25d184" },
-  ];
 
   const chartData = {
     labels: "",
     datasets: [
       {
-        data: datasets,
+        data: sortedData.map(e => e.amount),
         backgroundColor: [
           "rgb(254,176,49)",
           "rgb(240,86,65)",
@@ -66,18 +64,6 @@ export default function ({ data, grow }) {
     ],
   };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: true,
-
-    plugins: {
-      legend: {
-        position: "right",
-        padding: 2,
-      },
-    },
-  };
-
   return (
     <Container grow={2}>
       <h2>Traffic Veracity</h2>
@@ -86,7 +72,7 @@ export default function ({ data, grow }) {
           <Doughnut datasetIdKey="id" data={chartData} options={options} />
         </Chart>
         <Column>
-          {legend.map((item) =>
+          {sortedData.map((item) =>
             StatsDot({
               name: item.name,
               amount: item.amount,
@@ -101,12 +87,24 @@ export default function ({ data, grow }) {
 
 const StatsDot = ({ name, amount, color }) => {
   return (
-    <Row>
+    <Row key={name}>
       <Dot color={color} />
       <h4>{amount}</h4>
       <span>{name}</span>
     </Row>
   );
+};
+
+const options = {
+  responsive: true,
+  maintainAspectRatio: true,
+
+  plugins: {
+    legend: {
+      position: "right",
+      padding: 2,
+    },
+  },
 };
 
 const Container = styled.div`

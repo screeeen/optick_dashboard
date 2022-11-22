@@ -3,11 +3,13 @@ import SelectionItem from "./SelectionItem";
 import { MENU_ITEMS } from "./menuDescriptor";
 import { useDispatch } from "react-redux";
 import { changePage } from "../actions/LayoutActions";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-export default function ({ currentPage }) {
-  const [selection, setSelection] = useState(currentPage);
+export default function () {
   const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.layout.currentPage);
+  const [selection, setSelection] = useState(currentPage);
 
   const selectPage = ({ name }) => {
     setSelection(name);

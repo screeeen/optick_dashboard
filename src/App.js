@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 // import { ThemeProvider } from 'styled-components';
 import store from "./store/index";
 import { createGlobalStyle } from "styled-components";
-import DashboardContainer from "./DashboardContainer";
+import DashboardContainer from "./DashBoard/DashboardContainer";
 import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   `;
 
 function App() {
+
   return (
     <Provider store={store}>
       <GlobalStyle />

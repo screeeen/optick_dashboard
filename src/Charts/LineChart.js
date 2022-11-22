@@ -31,7 +31,6 @@ export default function ({ data, grow }) {
   const labels = data.map((day) =>
     day.day.replace("-2022", "").replace("-", "/")
   );
-
   const datasets = data.map((day) => day.risk.invalid);
 
   const chartData = {
@@ -47,37 +46,6 @@ export default function ({ data, grow }) {
     ],
   };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        position: "left",
-        ticks: {
-          callback: function (value, index, values) {
-            return Number((value / 700).toFixed(1)) + "K"; //pass tick values as a string into Number function
-          },
-        },
-        title: {
-          display: true,
-          text: "Number of visits",
-        },
-        grid: {
-          display: false,
-        },
-      },
-      x: {
-        grid: {
-          display: false,
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        position: "bottom",
-      },
-    },
-  };
 
   return (
     <Container grow={4}>
@@ -90,6 +58,39 @@ export default function ({ data, grow }) {
     </Container>
   );
 }
+
+const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      position: "left",
+      ticks: {
+        callback: function (value, index, values) {
+          return Number((value / 700).toFixed(1)) + "K"; //pass tick values as a string into Number function
+        },
+      },
+      title: {
+        display: true,
+        text: "Number of visits",
+      },
+      grid: {
+        display: false,
+      },
+    },
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: "bottom",
+    },
+  },
+};
+
 
 const Container = styled.div`
   width: 100%;

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import DateSelector from "./DateSelector";
 import MiddleSection from "./MiddleSection";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 //https://us-central1-opticks-test.cloudfunctions.net/stats
@@ -14,6 +15,8 @@ export default function ({ page }) {
   const [dateRange, setDateRange] = useState("last_7_days");
   const [data, setData] = useState(undefined);
 
+  const currentPage = useSelector((state) => state.layout.currentPage);
+
   useEffect(() => {
     const testCall = `${STATS_URI}?range=${dateRange}`;
     axios
@@ -22,13 +25,15 @@ export default function ({ page }) {
       .catch((error) => error);
   }, [dateRange]);
 
+
+
   return (
     <Container>
       <SubContainer>
         <TopSection>
           <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
         </TopSection>
-        <MiddleSection data={data} page={page} />
+        <MiddleSection data={data} page={currentPage} />
         <Section>
           <Other>Other widgets</Other>
         </Section>

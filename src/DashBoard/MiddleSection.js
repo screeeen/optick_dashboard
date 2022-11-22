@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import LineChart from "./LineChart";
-import DoughnutChart from "./DoughnutChart";
-import SavingsChart from "./SavingsChart";
-import ThreatsChart from "./ThreatsChart";
+import LineChart from "../Charts/LineChart";
+import DoughnutChart from "../Charts/DoughnutChart";
+import SavingsChart from "../Charts/SavingsChart";
+import ThreatsChart from "../Charts/ThreatsChart";
 
 export default function MiddleSection({ data, page }) {
   if (!data) return;
+
 
   return (
     <Section>
