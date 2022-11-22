@@ -10,22 +10,32 @@ export default function FallbackMessage({
   message = defaultMessage,
 }) {
   return (
-    <StyledMessage>
-      <h4>{title}</h4>
-      <p>{message}</p>
-    </StyledMessage>
+    <Message>
+      <Column>
+        <h4>{title}</h4>
+        <p>{message}</p>
+      </Column>
+    </Message>
   );
 }
 
-const StyledMessage = styled.div`
-  width: 60%;
+const Message = styled.div`
+  width: 40%;
   height: 60%;
-  border-radius: 5%;
+  border-radius: 10px;
   background-color: lightblue;
   border: 1px solid blue;
+  color: blue;
+  padding: 0 2rem;
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1rem 0;
   h4 {
     font-weight: bold;
   }
-
-  color: blue;
 `;
