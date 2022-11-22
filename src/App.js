@@ -1,9 +1,9 @@
 import { Provider } from "react-redux";
 // import { ThemeProvider } from 'styled-components';
-import { StyledApp } from "./StyledApp";
 import store from "./store/index";
 import { createGlobalStyle } from "styled-components";
 import DashboardContainer from "./DashboardContainer";
+import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   `;
+
 function App() {
   return (
     <Provider store={store}>
@@ -24,3 +25,11 @@ function App() {
 }
 
 export default App;
+
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fffefe;
+  overflow: hidden; /* Hide scrollbars */
+`;

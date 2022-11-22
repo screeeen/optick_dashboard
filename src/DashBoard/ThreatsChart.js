@@ -57,55 +57,63 @@ export default function Threats({ data }) {
   const totalValues = datasets.reduce((acu, val) => acu + val, 0);
 
   return (
-    <StyledChart>
-      <StyledColumn>
-        <h2>Threat Distribution</h2>
-        <StyledRow>
-          <StyledColumn>
-            {legend.map((item) =>
-              StatsThreats({
-                name: item.name,
-                amount: item.amount,
-                color: color,
-                totalValues: totalValues,
-              })
-            )}
-          </StyledColumn>
-        </StyledRow>
-      </StyledColumn>
-    </StyledChart>
+    <Container>
+      <h2>Threat Distribution</h2>
+      <Column>
+        {legend.map((item) =>
+          StatsThreats({
+            name: item.name,
+            amount: item.amount,
+            color: color,
+            totalValues: totalValues,
+          })
+        )}
+      </Column>
+    </Container>
   );
 }
 
 const StatsThreats = ({ name, amount, color, totalValues }) => {
   return (
-    <StyledRow>
+    <Row>
       <Bar value={amount} max={totalValues} color={color} amount={amount} />
-      <h4>{`${amount} ${name}`}</h4>
-    </StyledRow>
+      <h4>{amount}</h4>
+      <span>{name}</span>
+    </Row>
   );
 };
 
-const StyledColumn = styled.div`
+const Column = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
 `;
 
-const StyledRow = styled.div`
+const Row = styled.div`
+  height: 100%;
   display: flex;
+  align-items: center;
+  h4 {
+    padding: 0 0.5rem;
+  }
 `;
 
-export const StyledChart = styled.div`
+const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-grow: ${(props) => props.grow};
-  margin: 2em;
+  flex-grow: 1;
+  padding: 0 2rem;
+  border-radius: 0.5rem;
+  background: whitesmoke;
 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   h2 {
     font-weight: bold;
+    font-size: 1rem;
+    padding: 1rem 0;
   }
 `;
 

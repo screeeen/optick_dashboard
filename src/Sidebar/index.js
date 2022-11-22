@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { changePage } from "../actions/LayoutActions";
 import styled from "styled-components";
 
-export default function Sidebar({ currentPage }) {
+export default function ({ currentPage }) {
   const [selection, setSelection] = useState(currentPage);
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ export default function Sidebar({ currentPage }) {
   };
 
   return (
-    <StyledSidebar>
+    <Sidebar>
       <p>INTELLIGENCE</p>
       {MENU_ITEMS.map((item) => (
         <SelectionItem
@@ -26,24 +26,24 @@ export default function Sidebar({ currentPage }) {
           onClick={() => selectPage({ name: item.name })}
         />
       ))}
-    </StyledSidebar>
+    </Sidebar>
   );
 }
 
-const StyledSidebar = styled.section`
-  width: 18%;
-  min-width: 10vw;
+const Sidebar = styled.section`
+  width: 16rem;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  padding: 2% 2% 2% 0;
+  align-items: center;
+  padding: 1% 0;
   color: #99b4cc;
 
   p {
+    align-self: flex-start;
     font-size: 1em;
     font-weight: bold;
-    padding: 2% 0 10% 2%;
+    padding: 0 0 6% 8%;
   }
 
   overflow: auto;

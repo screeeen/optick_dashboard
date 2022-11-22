@@ -41,13 +41,14 @@ export default function ({ data, grow }) {
         data: datasets,
         label: "Invalid visits",
         borderColor: "#3e95cd",
+        backgroundColor: "#3e95cd",
         tension: 0.4,
       },
     ],
   };
 
   const options = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false,
     scales: {
       y: {
@@ -79,34 +80,33 @@ export default function ({ data, grow }) {
   };
 
   return (
-    <StyledChart grow={4}>
-      <StyledColumn>
-        <h2>Invalid Traffic over time</h2>
-        {enoughData ? (
-          <Line datasetIdKey="id" data={chartData} options={options} />
-        ) : (
-          <FallbackMessage />
-        )}
-      </StyledColumn>
-    </StyledChart>
+    <Container grow={4}>
+      <h2>Invalid Traffic over time</h2>
+      {enoughData ? (
+        <Line datasetIdKey="id" data={chartData} options={options} />
+      ) : (
+        <FallbackMessage />
+      )}
+    </Container>
   );
 }
 
-const StyledChart = styled.div`
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
   flex-grow: ${(props) => props.grow};
-  margin: 2em;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  background: whitesmoke;
 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   h2 {
     font-weight: bold;
+    font-size: 1rem;
+    padding: 1rem;
   }
-`;
-
-const StyledColumn = styled.div`
-  display: flex;
-  flex-direction: column;
 `;

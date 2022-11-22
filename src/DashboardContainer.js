@@ -12,18 +12,16 @@ export default function DashboardContainer() {
   return (
     <>
       <Navbar />
-      <StyledContainer>
+      <Container>
         {showExplorer && <Sidebar currentPage={currentPage} />}
         <DashBoard page={currentPage} />
-      </StyledContainer>
+      </Container>
     </>
   );
 }
 
-const StyledContainer = styled.div`
-  width: 100%;
+const Container = styled.div`
   height: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  background: #d9d9d9;
 `;

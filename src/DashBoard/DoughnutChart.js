@@ -61,80 +61,99 @@ export default function ({ data, grow }) {
           "rgb(37,209,132)",
         ],
         fill: false,
-        tension: 0.5,
+        cutout: 50,
       },
     ],
   };
 
   const options = {
-    responsive: false,
-    maintainAspectRatio: false,
-    aspectRatio: 2,
+    responsive: true,
+    maintainAspectRatio: true,
+
     plugins: {
       legend: {
         position: "right",
+        padding: 2,
       },
     },
   };
 
   return (
-    <StyledChart grow={1}>
-      <StyledColumn>
-        <h2>Traffic Veracity</h2>
-        <StyledRow>
+    <Container grow={2}>
+      <h2>Traffic Veracity</h2>
+      <Row>
+        <Chart>
           <Doughnut datasetIdKey="id" data={chartData} options={options} />
-          <StyledColumn>
-            {legend.map((item) =>
-              StatsDot({
-                name: item.name,
-                amount: item.amount,
-                color: item.color,
-              })
-            )}
-          </StyledColumn>
-        </StyledRow>
-      </StyledColumn>
-    </StyledChart>
+        </Chart>
+        <Column>
+          {legend.map((item) =>
+            StatsDot({
+              name: item.name,
+              amount: item.amount,
+              color: item.color,
+            })
+          )}
+        </Column>
+      </Row>
+    </Container>
   );
 }
 
 const StatsDot = ({ name, amount, color }) => {
   return (
-    <StyledRow>
+    <Row>
       <Dot color={color} />
-      <h4>{`${amount} ${name}`}</h4>
-    </StyledRow>
+      <h4>{amount}</h4>
+      <span>{name}</span>
+    </Row>
   );
 };
 
-const StyledRow = styled.div`
-  display: flex;
-`;
-
-const StyledColumn = styled.div`
+const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-const Dot = styled.div`
-  background-color: transparent;
-  border: 4px solid ${(props) => props.color};
-  height: 12px;
-  border-radius: 100%;
-  width: 12px;
-`;
-
-const StyledChart = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   flex-grow: ${(props) => props.grow};
-
-  margin: 2em;
+  padding: 0 2rem;
+  border-radius: 0.5rem;
+  background: whitesmoke;
 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   h2 {
     font-weight: bold;
+    font-size: 1rem;
+    padding: 1rem;
   }
+`;
+
+const Chart = styled.div`
+  width: 9rem;
+  height: 100%;
+`;
+
+const Row = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  h4 {
+    padding: 0 0.5rem;
+  }
+`;
+
+const Column = styled.div`
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem 0;
+`;
+
+const Dot = styled.div`
+  height: 8px;
+  width: 8px;
+  background-color: transparent;
+  border: 4px solid ${(props) => props.color};
+  border-radius: 100%;
 `;

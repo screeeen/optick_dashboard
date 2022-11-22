@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import DateSelector from "./DateSelector";
-import MidRow from "./MidRow";
+import MiddleSection from "./MiddleSection";
 import styled from "styled-components";
 
 //https://us-central1-opticks-test.cloudfunctions.net/stats
@@ -23,13 +23,16 @@ export default function ({ page }) {
   }, [dateRange]);
 
   return (
-    <StyledDashboard>
-      <StyledBoardRow>
+    <Container>
+      <SubContainer>
         <DateSelector setDateRange={setDateRange} dateRange={dateRange} />
-      </StyledBoardRow>
+      </SubContainer>
 
-      <MidRow data={data} page={page} />
-    </StyledDashboard>
+      <MiddleSection data={data} page={page} />
+      <Section>
+        <Other>Other widgets</Other>
+      </Section>
+    </Container>
   );
 }
 
@@ -37,22 +40,42 @@ const StyledRow = styled.div`
   display: flex;
 `;
 
-const StyledDashboard = styled.div`
+const Container = styled.div`
   width: 100%;
-  height: 100%;
-  padding: 1%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+
+  margin: 1rem;
 `;
 
-const StyledBoardRow = styled(StyledRow)`
+const SubContainer = styled(StyledRow)`
   width: 100%;
+  max-height: 4rem;
+  padding: 2rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-end;
   align-items: center;
-  padding: 5%;
-  border: 1px solid blue;
+`;
+
+const Section = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+`;
+
+const Other = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background: whitesmoke;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;

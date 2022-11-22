@@ -18,7 +18,7 @@ export default function ({ dateRange, setDateRange }) {
   };
 
   return (
-    <StyledDateSelector
+    <DateSelector
       labelId="simple-select-label"
       id="simple-select"
       value={rangeOptions[dateRange]}
@@ -28,10 +28,10 @@ export default function ({ dateRange, setDateRange }) {
       {Object.values(rangeOptions).map((opt) => (
         <option key={opt}>{opt}</option>
       ))}
-    </StyledDateSelector>
+    </DateSelector>
   );
 }
 
-const StyledDateSelector = styled.select`
+const DateSelector = styled.select`
   color: black;
 `;
