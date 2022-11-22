@@ -87,16 +87,17 @@ const Column = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2rem;
 `;
 
 const Row = styled.div`
-  height: 100%;
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+
   h4 {
-    padding: 0 0.5rem;
+    padding: 0 0.5%;
   }
 `;
 
@@ -112,14 +113,14 @@ const Container = styled.div`
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   h2 {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1vw;
     padding: 1rem 0;
   }
 `;
 
 const Bar = styled.progress`
-  height: 10px;
-  width: 300px;
+  width: 4vw;
+
   appearance: none;
   -webkit-appearance: none;
 

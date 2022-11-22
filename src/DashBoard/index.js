@@ -43,9 +43,6 @@ const StyledRow = styled.div`
 
 const Container = styled.div`
   width: 80%;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
   margin: 1rem;
 `;
 

@@ -6,14 +6,9 @@ import FallbackMessage from "./FallbackMessage";
 export default function Savings() {
   const [data, setData] = useState(undefined);
 
-  // Create our number formatter.
   const formatter = new Intl.NumberFormat("es-ES", {
     style: "currency",
     currency: "EUR",
-
-    // These options are needed to round to whole numbers if that's what you want.
-    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
   });
 
   useEffect(() => {
@@ -60,6 +55,9 @@ const Container = styled.div`
   background: whitesmoke;
 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  h1 {
+    font-size: 3vw;
+  }
   h2 {
     font-weight: bold;
     font-size: 1rem;
@@ -76,7 +74,7 @@ const Container = styled.div`
   }
   h3 {
     font-family: "Roboto Condensed", sans-serif;
-    font-size: 1.6rem;
+    font-size: 2vw;
   }
 `;
 

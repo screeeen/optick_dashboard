@@ -1,5 +1,3 @@
-// @flow
-
 import Layout from "../model/Layout";
 import * as types from "../actionTypes/ActionTypes";
 
